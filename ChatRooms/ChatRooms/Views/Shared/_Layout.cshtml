@@ -6,42 +6,10 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script language="javascript" src="~/Scripts/JScript.js"></script>
 </head>
-<body onload="javascript:myfuntion();" onresize="javascript:myfuntion();">
-    <div id="container">
-        <div id="header">
-            Онлайн чат
-            <span id="login">
-                <a href="#">Sign in</a>
-            </span>
-        </div>
-        <div id="sidebar">
-            <ul id="navbar">
-                <li>@Html.ActionLink("Комната 1", "#")</li>
-                <li>@Html.ActionLink("Комната 2", "#")</li>
-                <li>@Html.ActionLink("Комната 3", "#")</li>
-                <li>@Html.ActionLink("Комната 4", "#")</li>
-            </ul>
-        </div>
-        <div id="content">
-            @RenderBody()
-        </div>
-        <div id="footer">
-            <form>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="text" id="message" value="">
-                        </td>
-                        <td width="10%">
-                            <input type="submit" id="send" value="SEND">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
+<body>
+    @RenderBody()
+
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
