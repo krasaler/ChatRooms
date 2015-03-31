@@ -1,61 +1,101 @@
 ﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    font: 10pt Arial, Helvetica, sans-serif;
+    background: #e1dfb9;
+    margin: 0;
+    padding: 0;
 }
 
-header, footer, nav, section {
-    display: block;
+h2 {
+    font-size: 1.1em;
+    color: #800040;
+    margin-top: 0;
 }
 
-
-/* Styles for basic forms
------------------------------------------------------------*/
-fieldset {
-    border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+#container {
+    width: 100%;
+    margin: 0 auto;
+    background: #f0f0f0;
 }
 
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
+#header {
+    font-size: 2.2em;
+    text-align: center;
+    padding: 5px;
+    background: #8fa09b;
+    color: #ffe;
+    vertical-align: middle;
 }
 
-textarea {
-    min-height: 75px;
+#sidebar {
+    width: 130px;
+    float: left;
 }
 
-.editor-label {
-    margin: 1em 0 0 0;
+#content {
+    margin-left: 130px;
+    padding: 10px;
+    background: #fff;
 }
 
-.editor-field {
-    margin: 0.5em 0 0 0;
+#footer {
+    background: #8fa09b;
+    color: #fff;
+    padding: 5px;
+    clear: left;
 }
 
+    #footer table {
+        width: 100%;
+        height: 100%;
+    }
 
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
+        #footer table a {
+            outline: none;
+        }
+
+        #footer table tr td {
+            padding: 5px;
+        }
+
+#message {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#footer table #send {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#login {
+    position: absolute;
+    right: 10px;
     color: #f00;
+    font-size: small;
+    margin-top: 5px;
+}
+/*Nav*/
+#navbar {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 130px;
 }
 
-.field-validation-valid {
-    display: none;
-}
+    #navbar li {
+        border-bottom: 1px solid #666;
+    }
 
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
-}
+    #navbar a {
+        background-color: #949494;
+        color: #fff;
+        padding: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: block;
+        height: 30px;
+    }
 
-.validation-summary-errors {
-    font-weight: bold;
-    color: #f00;
-}
-
-.validation-summary-valid {
-    display: none;
-}
+        #navbar a:hover {
+            background-color: #666;
+        }
