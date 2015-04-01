@@ -1,0 +1,55 @@
+﻿@model WebChat.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Регистрация</h2>
+@using (@Html.BeginForm())
+{
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label">
+                Логин
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Login")
+                @Html.TextBox("Login", Model.Login)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="FirstName">
+                Имя пользователя
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Name")
+                @Html.Password("Name", Model.Name)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="FirstName">
+                Пароль
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Password")
+                @Html.Password("Password", Model.Password)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="FirstName">
+                @Html.DisplayNameFor(
+                Подтверждение пароля
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("ConfirmPassword")
+                @Html.Password("ConfirmPassword", Model.ConfirmPassword)
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Register
+            </button>
+            @Html.ActionLink("Cancel", "Index", null, null, new { @class = "btn" })
+        </div>
+    </fieldset>
+}

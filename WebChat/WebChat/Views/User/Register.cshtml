@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label">
+                Email
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Email")
+                @Html.TextBox("Email", Model.Email)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="FirstName">
+                Password
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Login")
+                @Html.Password("Login", Model.Password)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="FirstName">
+                Password
+            </label>
+            <div class="controls">
+                @Html.ValidationMessage("Password")
+                @Html.Password("Password", Model.Password)
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Register
+            </button>
+            @Html.ActionLink("Cancel", "Index", null, null, new { @class = "btn" })
+        </div>
+    </fieldset>
