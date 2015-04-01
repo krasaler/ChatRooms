@@ -14,14 +14,29 @@ namespace WebChat.Services
                 return context.User.ToList();
             }
         }
-        public static User Get(int userId)
+        public static User GetById(int userId)
         {
             using (var context = new ChatEntities())
             {
                 return context.User.FirstOrDefault(s => s.Id == userId);
             }
         }
-
+        public static User Get(string userName, string password)
+        {
+            var user = GetByName(userName);
+            if (user != null)
+                if (String.Compare(user.Password,password)<0)
+                        return null;
+            return user;
+        }
+        public static User GetByName(string userName)
+        {
+            using (var context = new ChatEntities())
+            {
+                return context.User.FirstOrDefault(s =>
+                    s.Login == userName);
+            }
+        }
         public static void Save(User user)
         {
             using (var context = new ChatEntities())
@@ -47,6 +62,13 @@ namespace WebChat.Services
             {
                 context.Entry(user).State = System.Data.Entity.EntityState.Deleted;
                 context.SaveChanges();
+            }
+        }
+        public static bool IsExistedByName(string userName)
+        {
+            using (var context = new ChatEntities())
+            {
+                return context.User.Any(s => s.Login.ToUpper() == userName.ToUpper());
             }
         }
     }

@@ -1,14 +1,12 @@
-﻿@model WebChat.Models.RegisterModel
+﻿@model WebChat.Models.LoginModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    HtmlHelper.ClientValidationEnabled = true;
-    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
 }
 
-<h2>Register</h2>
-@using (Html.BeginForm()){
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     <fieldset>
@@ -23,15 +21,6 @@
         </div>
         <div class="control-group">
             <label class="control-label" for="FirstName">
-                @Html.DisplayNameFor(model => model.Name)
-            </label>
-            <div class="controls">
-                @Html.TextBoxFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="FirstName">
                 @Html.DisplayNameFor(model => model.Password)
             </label>
             <div class="controls">
@@ -39,21 +28,16 @@
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="FirstName">
-                @Html.DisplayNameFor(model => model.ConfirmPassword)
-            </label>
+        <div class="controls-group">
             <div class="controls">
-                @Html.PasswordFor(model => model.ConfirmPassword)
-                @Html.ValidationMessageFor(model => model.ConfirmPassword)
-               
+                @Html.DisplayNameFor(model => model.RememberMe)
+                @Html.CheckBoxFor(model => model.RememberMe)
             </div>
         </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">
-                Register
+                Войти
             </button>
-            @Html.ActionLink("Омена","Index", "Home", null, new { @class = "btn" })
         </div>
     </fieldset>
 }

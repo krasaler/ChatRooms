@@ -1,0 +1,14 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div>   Здравствуйте, @User.Identity.Name</div>
+    using (Html.BeginForm("LogOff", "User", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a>
+    }
+}
+else
+{
+    @Html.ActionLink("Регистрация", "Register", "User", new { area = "" }, new { id = "registerLink" })<br />
+    @Html.ActionLink("Выполнить вход", "Login", "User", new { area = "" }, new { id = "loginLink" })
+}
