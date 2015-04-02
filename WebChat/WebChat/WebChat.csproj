@@ -295,6 +295,8 @@
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Chat\Room.cshtml" />
     <Content Include="Views\Shared\_MessagePartial.cshtml" />
+    <Content Include="Views\Chat\RoomAjax.cshtml" />
+    <Content Include="Views\Chat\MenuAjax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,6 +20,19 @@ namespace WebChat.Controllers
             return View();
         }
 
+        public ActionResult RoomAjax(string roomName)
+        {
+            if (Request.IsAuthenticated)
+            {
+                List<Chat> chat = ChatService.GetByRoomName(roomName);
+                HttpCookie myCookie2 = new HttpCookie("RoomActive");
+                myCookie2.Value = RoomService.GetByName(roomName).Id.ToString();
+                Response.Cookies.Add(myCookie2);
+                VisitService.SaveDateVisit(User.Identity.Name, roomName);
+                return PartialView(ChatDetailsViewModelHelper.PopulateChatDetailsViewModelList(chat));
+            }
+            return RedirectToAction("Login", "User");
+        }
         public ActionResult Room(string roomName)
         {
             if (Request.IsAuthenticated)
@@ -81,6 +94,14 @@ namespace WebChat.Controllers
                 VisitService.SaveDateVisit(User.Identity.Name, RoomService.GetById(int.Parse(myCookie.Value)).Name);
             }
             return RedirectToAction("Room", "Chat", new { roomName = roomName });
+        }
+
+        public ActionResult MenuAjax()
+        {
+            HttpCookie myCookie2 = new HttpCookie("RoomActive");
+            myCookie2.Value = Request.Cookies["RoomActive"].Value;
+            Response.Cookies.Add(myCookie2);
+            return PartialView();
         }
 
     }

@@ -1,9 +1,28 @@
-﻿@model IEnumerable<WebChat.ViewModels.ChatDetailsViewModel>
-@{
-    ViewBag.Title = "Room";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿<script type="text/javascript">
+    var ajaxFn = function () {
+        $.ajax({
+            url: "RoomAjax",
+            data: { "roomName": "@WebChat.Services.RoomService.GetById(int.Parse(Response.Cookies["RoomActive"].Value)).Name.Trim()" },
+            type: "POST",
+            cache: false,
+            success: function (data) {
+                $('#partial1').html(data);
+            },
+            complete: function () {
+                setTimeout(ajaxFn, 5000)
+            }
+        });
+    };
+    ajaxFn();
+</script>
+<div id="partial1">
+    @model IEnumerable<WebChat.ViewModels.ChatDetailsViewModel>
+    @{
+        ViewBag.Title = "Room";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     @foreach (var item in Model)
     {
         <p style="margin-left:20px">@Html.DisplayFor(modelItem => item.UserName) : @Html.DisplayFor(modelItem => item.Message)</p>
     }
+</div>

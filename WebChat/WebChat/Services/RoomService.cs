@@ -25,7 +25,7 @@ namespace WebChat.Services
         {
             using (var context = new ChatEntities())
             {
-                return context.Room.FirstOrDefault(s => s.Name == roomName);
+                return context.Room.FirstOrDefault(s => s.Name.Trim() == roomName);
             }
         }
         public static void Save(Room room)
