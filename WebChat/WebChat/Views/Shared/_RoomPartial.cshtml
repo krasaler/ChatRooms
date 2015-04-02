@@ -1,0 +1,31 @@
+﻿<ul id="navbar">
+    @foreach (WebChat.Room item in WebChat.Services.RoomService.GetAll())
+    {
+        int count = 0;
+        if (User.Identity.Name != "")
+        {
+            count = WebChat.Services.ChatService.NewMessage(User.Identity.Name,
+       item.Name);
+        }
+        if (item.Id.ToString() != HttpContext.Current.Response.Cookies["RoomActive"].Value && User.Identity.Name != ""
+            && count != 0)
+        {
+
+            <li>
+                @Html.ActionLink(item.Name.Trim() + "(" + count + ")", "TempRoom", "Chat", new { roomName = item.Name },
+                null)
+            </li>
+
+        }
+        else
+        {
+                <li>
+                    @Html.ActionLink(item.Name.Trim(), "TempRoom", "Chat", new { roomName = item.Name }, null)
+                </li>
+        }
+    }
+    <li>
+        @Html.ActionLink("Добавить комнату", "CreateRoom", "Chat", new { area = "" }, null)
+    </li>
+</ul>
+@HttpContext.Current.Response.Cookies["MessCount"].Value

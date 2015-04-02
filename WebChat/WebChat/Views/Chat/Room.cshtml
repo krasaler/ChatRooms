@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebChat.ViewModels.ChatDetailsViewModel>
+@{
+    ViewBag.Title = "Room";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    @foreach (var item in Model)
+    {
+        <p style="margin-left:20px">@Html.DisplayFor(modelItem => item.UserName) : @Html.DisplayFor(modelItem => item.Message)</p>
+    }

@@ -1,6 +1,6 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <div>   Здравствуйте, @User.Identity.Name</div>
+    <div>   Здравствуйте, @WebChat.Services.UserService.GetByLogin(User.Identity.Name).Name</div>
     using (Html.BeginForm("LogOff", "User", FormMethod.Post, new { id = "logoutForm" }))
     {
         @Html.AntiForgeryToken()

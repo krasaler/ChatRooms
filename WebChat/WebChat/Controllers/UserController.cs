@@ -40,7 +40,7 @@ namespace WebChat.Controllers
                 };
                 UserService.Create(user);
 
-                FormsAuthentication.SetAuthCookie(user.Name, true);
+                FormsAuthentication.SetAuthCookie(user.Login, true);
 
                 return RedirectToAction("Index", "Home", new { area = "" });
 
@@ -65,7 +65,7 @@ namespace WebChat.Controllers
                     var user =UserService.Get(model.Login, model.Password);
                     if (user != null)
                     {
-                        FormsAuthentication.SetAuthCookie(user.Name, model.RememberMe);
+                        FormsAuthentication.SetAuthCookie(user.Login, model.RememberMe);
 
                         return RedirectToAction("Index", "Home", new { area = "" });
                     }
@@ -89,6 +89,11 @@ namespace WebChat.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home", new { area = "" });
+        }
+        [HttpPost]
+        public ActionResult AjaxRegisterStatus(RegisterModel model)
+        {
+            return View(model);
         }
     }
 }

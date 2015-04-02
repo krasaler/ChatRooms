@@ -1,0 +1,15 @@
+﻿@using (Html.BeginForm("NewMessage", "Chat", FormMethod.Post))
+{
+    <form>
+        <table>
+            <tr>
+                <td>
+                    @Html.TextBox("messageTxt","", new { id = "message" })
+                </td>
+                <td width="10%">
+                    <input type="submit" id="send" value="SEND">
+                </td>
+            </tr>
+        </table>
+    </form>
+}

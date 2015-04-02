@@ -26,5 +26,8 @@ namespace WebChat
         }
     
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Room> Room { get; set; }
+        public virtual DbSet<Chat> Chat { get; set; }
+        public virtual DbSet<Visit> Visit { get; set; }
     }
 }

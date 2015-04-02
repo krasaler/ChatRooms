@@ -5,7 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="73850a59b8f14c51aceb4e91a54a0e8e" Name="Diagram1">
-        <EntityTypeShape EntityType="ChatModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ChatModel.User" Width="1.5" PointX="1" PointY="2.625" />
+        <EntityTypeShape EntityType="ChatModel.Room" Width="1.5" PointX="6.25" PointY="3" />
+        <EntityTypeShape EntityType="ChatModel.Chat" Width="1.5" PointX="3.625" PointY="3.75" />
+        <AssociationConnector Association="ChatModel.FK_Chat_Chat" />
+        <AssociationConnector Association="ChatModel.FK_Chat_User" />
+        <EntityTypeShape EntityType="ChatModel.Visit" Width="1.5" PointX="3.125" PointY="0.5" />
+        <AssociationConnector Association="ChatModel.FK_Visit_Visit" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ChatModel.FK_Visit_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

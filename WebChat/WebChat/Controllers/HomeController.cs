@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebChat.Services;
 
 namespace WebChat.Controllers
 {
@@ -13,7 +14,7 @@ namespace WebChat.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Room", "Chat", new { roomName = RoomService.GetById(1).Name });
         }
 
     }

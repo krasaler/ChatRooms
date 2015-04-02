@@ -23,18 +23,18 @@ namespace WebChat.Services
         }
         public static User Get(string userName, string password)
         {
-            var user = GetByName(userName);
+            var user = GetByLogin(userName);
             if (user != null)
                 if (String.Compare(user.Password,password)<0)
                         return null;
             return user;
         }
-        public static User GetByName(string userName)
+        public static User GetByLogin(string userLogin)
         {
             using (var context = new ChatEntities())
             {
                 return context.User.FirstOrDefault(s =>
-                    s.Login == userName);
+                    s.Login == userLogin);
             }
         }
         public static void Save(User user)
